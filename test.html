@@ -1,0 +1,120 @@
+<!--
+ * @
+ * @Author: Yellow
+ * @Date: 2020-01-08 20:42
+ * @LastEditTime: 2020-06-20 15:07
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap_content {
+            height: 200px;
+            width: 200px;
+            overflow-y: auto;
+        }
+
+        #wrap_content::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        #wrap_content:hover::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        /*定义滚动条轨道 内阴影+圆角*/
+        #wrap_content::-webkit-scrollbar-track {
+            border-radius: 10px;
+            /*滚动条的背景区域的圆角*/
+            background-color: #f1f1f1;
+            /*滚动条的背景颜色*/
+        }
+
+        /*定义滑块 内阴影+圆角*/
+        #wrap_content::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            /*滚动条的圆角*/
+            background-color: #a8a8a8;
+            /*滚动条的背景颜色*/
+        }
+
+        .paste_view {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap_content">
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae laboriosam incidunt id similique sunt,
+            voluptatibus accusamus! Impedit assumenda error magnam quas cumque labore sit. Tenetur natus atque quidem
+            enim provident.</div>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae laboriosam incidunt id similique sunt,
+            voluptatibus accusamus! Impedit assumenda error magnam quas cumque labore sit. Tenetur natus atque quidem
+            enim provident.</div>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae laboriosam incidunt id similique sunt,
+            voluptatibus accusamus! Impedit assumenda error magnam quas cumque labore sit. Tenetur natus atque quidem
+            enim provident.</div>
+    </div>
+    <div class="paste_view">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae laboriosam incidunt id similique sunt,
+        voluptatibus accusamus! Impedit assumenda error magnam quas cumque labore sit. Tenetur natus atque quidem enim
+        provident.
+    </div>
+    <button style="font-size: 40px" onclick="hide()">hide</button>
+    <button style="font-size: 40px" onclick="show()">show</button>
+    <button style="font-size: 40px" onclick="notifyMe()">alert</button>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $("#wrap_content").scrollTop(500)
+        function hide() {
+            $(".paste_view").hide()
+        }
+        function show() {
+            $(".paste_view").show()
+        }
+        document.onkeyup = function (e) {
+            var event = e || window.event;
+            var key = event.which || event.keyCode || event.charCode;
+            if (key == 13) {
+                if ($(".paste_view").is(':visible')) {
+                    alert("show")
+                } else {
+                    alert("hide")
+                }
+            }
+        };
+
+        function notifyMe() {
+            var notification = new Notification("已打开气泡消息提醒");
+            
+            /*// 先检查浏览器是否支持
+			if (!("Notification" in window)) {
+				alert("This browser does not support desktop notification");
+			}
+			// 检查用户是否同意接受通知
+			else if (Notification.permission === "granted") {
+				// If it's okay let's create a notification
+				var notification = new Notification("已打开气泡消息提醒");
+			}
+
+			// 否则我们需要向用户获取权限
+			else if (Notification.permission !== 'denied') {
+				Notification.requestPermission(function (permission) {
+					// 如果用户同意，就可以向他们发送通知
+					if (permission === "granted") {
+						var notification = new Notification("已打开气泡消息提醒");
+					}
+				});
+			}*/
+        }
+    </script>
+</body>
+
+</html>
